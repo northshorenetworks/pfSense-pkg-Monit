@@ -1,0 +1,7 @@
+pkg/monit/monit.xml
+pkg/monit/monit.inc
+pkg/monit/monit_post_install.php
+/etc/inc/priv/monit.priv.inc
+www/packages/monit/index.php
+%%DATADIR%%/info.xml
+@dir /etc/inc/priv

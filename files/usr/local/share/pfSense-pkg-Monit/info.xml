@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<pfsensepkgs>
+	<package>
+		<name>Monit</name>
+		<descr><![CDATA[Monit monitoring tool]]></descr>
+		<version>5.20.0</version>
+		<configurationfile>monit/monit.xml</configurationfile>
+	</package>
+</pfsensepkgs>
