@@ -1,7 +1,7 @@
 <?php
 
   define('MONIT_CONFIG_DIR', '/usr/local/pkg/monit/');
-  define('MONIT_STARTUP_SCRIPT', '/usr/local/etc/rc.d/monit');
+  define('MONIT_STARTUP_SCRIPT', '/usr/local/etc/rc.d/monit.sh');
   
   require_once('config.inc');
   require_once('service-utils.inc');
