@@ -53,7 +53,7 @@
 		<name>Monit</name>
 		<tooltiptext>Set up monit specific settings</tooltiptext>
 		<section>Services</section>
-		<url>/monit/index.php</url>
+		<url>/packages/monit/index.php</url>
 	</menu>
 	<service>
 		<name>monit</name>
