@@ -59,7 +59,7 @@ monit_write_config();
 monit_write_shortcutfile();
 
 log_error("[monit] monit.sh start: 6");
-exec('/usr/local/bin/monit -c /usr/local/pkg/monit/monitrc');
+exec('/usr/local/etc/rc.d/monit.sh start');
 
 /* Done with post-install, so clear flag */
 log_error(gettext("[monit] Package post-installation tasks completed..."));
