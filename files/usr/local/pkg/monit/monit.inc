@@ -20,6 +20,7 @@
     $fd = fopen(MONIT_CONFIG_DIR . 'monitrc', 'w');
     fwrite($fd, base64_decode($monit['monit_config']));
     fclose($fd);
+    chmod(MONIT_CONFIG_DIR . 'monitrc', 0700);
     exec(MONIT_STARTUP_SCRIPT . " restart");	
   }
   
