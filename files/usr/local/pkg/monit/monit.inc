@@ -57,8 +57,7 @@ EOD;
 global $shortcuts;
 
 $shortcuts['monit'] = array();
-$shortcuts['monit']['main'] = "monit/index.php";
-$shortcuts['monit']['log'] = "/monit/monitor.php";
+$shortcuts['monit']['main'] = "packages/monit/index.php";
 $shortcuts['monit']['service'] = "monit";
 
 ?>
