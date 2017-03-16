@@ -29,7 +29,7 @@ do-install:
 	${MKDIR} ${STAGEDIR}/etc/inc/priv
 	${MKDIR} ${STAGEDIR}${PREFIX}/www/packages/monit
 	${MKDIR} ${STAGEDIR}${DATADIR}
-	${INSTALL_DATA} -m 0644 ${FILESDIR}${PREFIX}/pkg/monit/monit_post_install.php \
+	${INSTALL_DATA} ${FILESDIR}${PREFIX}/pkg/monit/monit_post_install.php \
 		${STAGEDIR}${PREFIX}/pkg/monit
 	${INSTALL_DATA} ${FILESDIR}${PREFIX}/pkg/monit/monit.xml \
 		${STAGEDIR}${PREFIX}/pkg/monit
