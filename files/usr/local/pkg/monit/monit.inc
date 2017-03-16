@@ -20,8 +20,6 @@
     $fd = fopen(MONIT_CONFIG_DIR . 'monitrc', 'w');
     fwrite($fd, base64_decode($monit['monit_config']));
     fclose($fd);
-	chmod(MONIT_CONFIG_DIR . 'monitrc', 0700);
-
     exec(MONIT_STARTUP_SCRIPT . " restart");	
   }
   
@@ -30,10 +28,8 @@
   $rc['file'] = 'monit.sh';
   $rc['start'] = <<<EOD
   sleep 2
-if [ ! -e /var/run/monit.pid ]; then
   pkill monit 2>/dev/null 
   /usr/local/bin/monit -c /usr/local/pkg/monit/monitrc
-fi
 
 EOD;
 
