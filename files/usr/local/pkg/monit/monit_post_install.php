@@ -53,9 +53,9 @@ $config['installedpackages']['monitglobal']['monit_config'] = "c2V0IGRhZW1vbiAgN
 /* Update General Settings with default values if not already set */
 log_error("[monit] killing any monit processes");
 exec('/usr/bin/killall -9 monit 2>/dev/null');
-monit_write_config();
 
 monit_write_rcfile();
+monit_write_config();
 monit_write_shortcutfile();
 
 log_error("[monit] monit.sh start: 6");
