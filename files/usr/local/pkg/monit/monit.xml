@@ -59,7 +59,7 @@
 		<name>monit</name>
 		<rcfile>monit.sh</rcfile>
 		<executable>monit</executable>
-		<description><![CDATA[Northshore Network Solutions monitoring service]]></description>
+		<description><![CDATA[Monit: Easy, proactive monitoring of Unix systems, network and cloud services.]]></description>
 		<main>/packages/monit/index.php</main>
 	</service>
 	<custom_php_install_command>
