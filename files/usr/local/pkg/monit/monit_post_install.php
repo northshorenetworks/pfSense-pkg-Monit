@@ -58,8 +58,8 @@ monit_write_rcfile();
 monit_write_config();
 monit_write_shortcutfile();
 
-log_error("[monit] monit.sh start: 6");
-exec('/usr/local/etc/rc.d/monit.sh start');
+log_error("[monit] Starting monit daemon");
+shell_exec('usr/local/etc/rc.d/monit.sh start 2>&1 > /dev/null');
 
 /* Done with post-install, so clear flag */
 log_error(gettext("[monit] Package post-installation tasks completed..."));
