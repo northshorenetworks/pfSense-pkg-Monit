@@ -13,6 +13,24 @@
 
   $monit = &$config['installedpackages']['monitglobal'];
 
+  function is_monit_running() {
+  	exec("pgrep monit", $pids);
+	if(empty($pids)) {
+		return false;
+	} else {
+		return true;
+        }
+  }
+
+  function monit_validate_config () {
+  	exec('/usr/local/bin/monit -c /usr/local/pkg/monit/monitrc', $output, $return);
+	if (!$return) {
+	    return true;
+	} else {
+	    return false;
+	}
+  }
+
   function monit_write_config() {
     global $config;
     $monit = &$config['installedpackages']['monitglobal'];
@@ -21,6 +39,19 @@
     fwrite($fd, base64_decode($monit['monit_config']));
     fclose($fd);
     chmod(MONIT_CONFIG_DIR . 'monitrc', 0700);
+   
+    # test the config to see if it parses, log an error if it doesn't reload it
+    if (monit_validate_config()) {
+	if (is_monit_running()) {
+		// Reload the new configuration
+    		exec(MONIT_STARTUP_SCRIPT . " reload");	
+	} else {
+		// Start the monit service
+    		exec(MONIT_STARTUP_SCRIPT . " start");	
+	}
+    } else {
+	log_error("There were errors in the monit config file, please review");
+    }
     exec(MONIT_STARTUP_SCRIPT . " restart");	
   }
   
@@ -30,7 +61,7 @@
   $rc['start'] = <<<EOD
   sleep 2
   pkill monit 2>/dev/null 
-  /usr/local/bin/monit -c /usr/local/pkg/monit/monitrc
+  /usr/local/bin/monit -c /usr/local/pkg/monit/monitrc -l /var/log/monit.log -p /var/run/monit.pid
 
 EOD;
 
@@ -39,6 +70,10 @@ EOD;
 sleep 2
 pkill monit 2>/dev/null
 
+EOD;
+
+  $rc['reload'] = <<<EOD
+  /usr/local/bin/monit -c /usr/local/pkg/monit/monitrc -l /var/log/monit.log -p /var/run/monit.pid reload
 EOD;
 
   conf_mount_rw();
