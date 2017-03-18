@@ -5,5 +5,9 @@
 		<descr><![CDATA[Monit monitoring tool]]></descr>
 		<version>5.20.0</version>
 		<configurationfile>monit/monit.xml</configurationfile>
+		<logging>
+			<facilityname>monit</facilityname>
+			<logfilename>monit.log</logfilename>
+		</logging>
 	</package>
 </pfsensepkgs>
